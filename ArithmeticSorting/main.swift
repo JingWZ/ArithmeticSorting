@@ -51,13 +51,41 @@ func bubbleSorting() {
                 lastSortedIndex = index
             }
         }
-        print("sortedList:\(sortedList),\(lastSortedIndex)")
+//        print("sortedList:\(sortedList),\(lastSortedIndex)")
     } while swapped
     
-    //print("sortedList:\(sortedList)")
+    print("sortedList:\(sortedList)")
 }
 
 bubbleSorting()
+
+func selectSorting() {
+    
+    var sortedList = originalList
+    var lastSortedIndex = 0
+    
+    while lastSortedIndex < sortedList.count {
+        var minimumIndex:Int = lastSortedIndex
+        for var index = lastSortedIndex; index < sortedList.count; index++ {
+            let a = sortedList[index]
+            if a < sortedList[minimumIndex] {
+                minimumIndex = index
+            }
+        }
+        let min = sortedList[minimumIndex]
+        sortedList[minimumIndex] = sortedList[lastSortedIndex]
+        sortedList[lastSortedIndex] = min
+        
+        lastSortedIndex++
+    }
+    print("selectSorting:\(sortedList)")
+}
+
+selectSorting()
+
+
+
+
 
 
 
