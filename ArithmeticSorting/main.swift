@@ -33,12 +33,13 @@ let originalList = randomList(10)
 func bubbleSorting() {
     
     var sortedList = originalList
-    var count = sortedList.count // for skipping sorted elements
+    var lastSortedIndex = sortedList.count - 1 // for skipping sorted elements
     var swapped = false // for not sorting while no swapping in previous turn
     
     repeat {
         swapped = false
-        for var index = 0; index < count - 1; index++ {
+        let count = lastSortedIndex
+        for var index = 0; index < count; index++ {
             var a = sortedList[index]
             var b = sortedList[index + 1]
             
@@ -47,13 +48,16 @@ func bubbleSorting() {
                 sortedList[index] = a
                 sortedList[index + 1] = b
                 swapped = true
+                lastSortedIndex = index
             }
         }
-        count--
+        print("sortedList:\(sortedList),\(lastSortedIndex)")
     } while swapped
     
-    print("sortedList:\(sortedList)")
+    //print("sortedList:\(sortedList)")
 }
 
 bubbleSorting()
+
+
 
