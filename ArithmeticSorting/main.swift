@@ -105,6 +105,52 @@ func insertSorting() {
 
 //insertSorting()
 
+func mergeSorting(list: [Int]) -> [Int] {
+    if list.count <= 1 {
+        return list
+    }
+    
+    let sep = list.count / 2
+    let l = Array(list[0..<sep])
+    let r = Array(list[sep..<list.count])
+    
+    //print("left:\(l)")
+    //print("right:\(r)")
+    
+    let left = mergeSorting(l)
+    let right = mergeSorting(r)
+    let mergea = merge(left: left, right: right)
+    
+    print("merge:\(mergea)")
+    
+    return mergea
+}
+
+func merge(left left: [Int], right: [Int]) -> [Int] {
+    
+    var l = 0
+    var r = 0
+    var result = [Int]()
+    
+    while l < left.count && r < right.count {
+        if left[l] < right[r] {
+            result.append(left[l])
+            l++
+        } else {
+            result.append(right[r])
+            r++
+        }
+    }
+    result += Array(left[l..<left.count])
+    result += Array(right[r..<right.count])
+    
+    return result
+}
+
+//mergeSorting(originalList)
+
+
+
 
 
 
