@@ -51,13 +51,12 @@ func bubbleSorting() {
                 lastSortedIndex = index
             }
         }
-//        print("sortedList:\(sortedList),\(lastSortedIndex)")
     } while swapped
     
     print("sortedList:\(sortedList)")
 }
 
-bubbleSorting()
+//bubbleSorting()
 
 func selectSorting() {
     
@@ -81,9 +80,30 @@ func selectSorting() {
     print("selectSorting:\(sortedList)")
 }
 
-selectSorting()
+//selectSorting()
 
+func insertSorting() {
+    
+    var sortedList = originalList
+    
+    var lastSortedIndex = 1
+    while lastSortedIndex < sortedList.count {
 
+        var tmp = lastSortedIndex
+        for var i = lastSortedIndex - 1; i >= 0; i-- {
+            let v = sortedList[tmp]
+            if sortedList[i] > v {
+                sortedList.removeAtIndex(tmp)
+                sortedList.insert(v, atIndex: i)
+                tmp = i
+            }
+        }
+        lastSortedIndex++
+    }
+    print("insertSorting:\(sortedList)")
+}
+
+//insertSorting()
 
 
 
